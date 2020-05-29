@@ -9,3 +9,5 @@ const jwtGen = (id) => {
   }
   return jwt.sign(payload, process.env.jwt, {expiresIn: 1800})
 }
+
+module.exports = jwtGen

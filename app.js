@@ -6,6 +6,10 @@ const cors = require('cors')
 app.use(cors())
 app.use(express.json())
 
+// routes
+app.use('/auth', require('./api/routes/users'))
+app.use('/contacts', require('./api/routes/contacts'))
+
 
 port = process.env.PORT || 5000
 
