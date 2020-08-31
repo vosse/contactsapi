@@ -12,7 +12,7 @@ get route
 router.get('/test', auth, async(req, res) => {
   try {
     console.log('test')
-    res.json('Test')
+    res.status(200).json('Test')
   } catch (err) {
     console.error(err.message)
     console.log('test')
@@ -47,10 +47,11 @@ post route
 router.post('/new', auth, async (req, res) => {
   try {
     console.log(req.body)
-    const { first_name, last_name, email, number, favorite } = req.body
 
+    let { first_name, last_name, email, number } = req.body
+    number = `+${number}`
     const newContact = await pool.query(
-      'INSERT INTO contacts (user_id, contact_first_name, contact_last_name, contact_email, contact_number, contact_favorite) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *', [req.user.id, first_name, last_name, email, number, favorite]
+      'INSERT INTO contacts (user_id, contact_first_name, contact_last_name, contact_email, contact_number) VALUES ($1, $2, $3, $4, $5) RETURNING *', [req.user.id, first_name, last_name, email, number]
     )
     res.json(newContact.rows[0])
   } catch (err) {

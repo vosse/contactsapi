@@ -85,7 +85,7 @@ verify/auth
 post route
 */
 
-router.post('/verify', async(req, res) => {
+router.post('/verify', auth, async(req, res) => {
   try {
     res.json(true)
   } catch (err) {
