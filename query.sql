@@ -25,6 +25,6 @@ CREATE TABLE contacts(
 INSERT INTO users (user_name, user_email, user_password) VALUES ('test', 'test@test.ch', 'test');
 
 INSERT INTO contacts (user_id, contact_first_name, contact_last_name, contact_email, contact_number, contact_favorite) VALUES
- ('622ec6b0-e5f7-4346-aa21-a2f549b2e1cb', 'Konj', 'Konjevic', 'konj@test.ch', '+381601234568', false);
+ ('622ec6b0-e5f7-4346-aa21-a2f549b2e1cb', 'Nick', 'Cage', 'nick@cage.com', '+381601234568');
 
  SELECT * FROM users INNER JOIN contacts ON users.user_id = contacts.user_id;
